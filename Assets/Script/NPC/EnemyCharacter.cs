@@ -23,6 +23,8 @@ public class EnemyCharacter : BaseCharacter
     void Start()
     {
         currentHP = maxHP;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerCharacter = player.GetComponent<PlayerCharacter>();
     }
 
     // Update is called once per frame

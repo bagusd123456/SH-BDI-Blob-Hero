@@ -36,6 +36,9 @@ public abstract class BaseCharacter : MonoBehaviour
     {
         Material mat = gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material;
         mat.SetColor("_BaseColor", Color.Lerp(Color.red, Color.white, Mathf.Lerp(0, 1, time)));
+       
+        Material mat2 = gameObject.GetComponentInChildren<MeshRenderer>().material;
+        mat2.SetColor("_BaseColor", Color.Lerp(Color.red, Color.white, Mathf.Lerp(0, 1, time)));
     }
     public virtual void Heal(int healAmount)
     {

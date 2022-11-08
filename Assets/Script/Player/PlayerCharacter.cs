@@ -11,6 +11,8 @@ public class PlayerCharacter : BaseCharacter
     public int attackDamage;
 
     public Collider[] enemy;
+
+    public List<BaseSkill> _skillList;
     public override void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -34,7 +36,6 @@ public class PlayerCharacter : BaseCharacter
     private void Start()
     {
         currentHP = maxHP;
-        Debug.Log(LayerMask.NameToLayer("Enemy"));
     }
 
     void Update()
@@ -52,6 +53,16 @@ public class PlayerCharacter : BaseCharacter
             if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("isAttack");
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                _skillList[0].CastSkill();
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                Instantiate(_skillList[1].gameObject,transform.position + Vector3.up * 10f,Quaternion.identity);
             }
         }
         
