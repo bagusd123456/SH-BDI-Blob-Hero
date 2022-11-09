@@ -38,6 +38,11 @@ public class ActiveSkill : BaseSkill
         throw new System.NotImplementedException();
     }
 
+    public override void OnLevelUp()
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

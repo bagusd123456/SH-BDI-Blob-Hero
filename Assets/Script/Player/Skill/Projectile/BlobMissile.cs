@@ -3,8 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlobMissile : MonoBehaviour
+public class BlobMissile : BaseSkill
 {
+    public override void CastSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnLevelUp()
+    {
+        //base.OnLevelUp();
+        cooldownTime -= 0.25f;
+        if (cooldownTime <= 0) cooldownTime = 0.1f;
+    }
+
 #if DEFAULTCODING
     public HomingProjectile projectile;
     public List<EnemyCharacter> enemyCharacters = new List<EnemyCharacter>;

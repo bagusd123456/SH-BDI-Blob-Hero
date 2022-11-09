@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlobOrbs : MonoBehaviour
+public class BlobOrbs : BaseSkill
 {
 #if DEFAULTCODING
     public RotatingProjectile projectile;
@@ -36,9 +36,19 @@ public class BlobOrbs : MonoBehaviour
     public RotatingProjectile projectile;
     public List<RotatingProjectile> projectiles = new List<RotatingProjectile>();
     public int maxOrb = 1;
-    public float projectileSpeed = 5f;
     public float targetDistance = 3;
     public Vector3 offset;
+
+    public override void CastSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnLevelUp()
+    {
+        maxOrb++;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

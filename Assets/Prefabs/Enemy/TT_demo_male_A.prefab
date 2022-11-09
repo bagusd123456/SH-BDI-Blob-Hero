@@ -995,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6257054809411534331
 Transform:
   m_ObjectHideFlags: 0
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   player: {fileID: 0}
   minDistance: 1.45
   maxDistance: 10
-  moveSpeed: 1
+  moveSpeed: 30
   follow: 1
   seenPlayer: 0
   hitCheck: {fileID: 6257054809411534331}

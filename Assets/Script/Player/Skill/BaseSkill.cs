@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BaseSkill : MonoBehaviour
 {
+    public string skillName;
+    public string skillDescription;
     public float time;
     public float cooldownTime;
     public bool canCast;
@@ -11,7 +13,10 @@ public abstract class BaseSkill : MonoBehaviour
     public int baseDamage;
     public float projectileSpeed = 25f;
     public GameObject prefabFX;
+
+    public int level = 1;
     public abstract void CastSkill();
+    public abstract void OnLevelUp();
 
     public void Update()
     {

@@ -10,6 +10,8 @@ public class MeteorProjectile : BaseSkill
     //    ground.y = 0;
     //}
 
+    public GameObject blowFX;
+    public float scaleUp = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +21,23 @@ public class MeteorProjectile : BaseSkill
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.down * 5 * Time.deltaTime;
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var go = Instantiate(prefabFX, transform.position,Quaternion.identity);
-
-        Destroy(gameObject);
+        
     }
 
     public override void CastSkill()
     {
-        throw new System.NotImplementedException();
+        var go = Instantiate(prefabFX, transform.position + Vector3.up * 10f, Quaternion.identity);
+        go.GetComponent<MeteorBehavior>().blowFX = blowFX;
+    }
+
+    public override void OnLevelUp()
+    {
+        //base.OnLevelUp();
+        scaleUp += 0.2f;
     }
 }

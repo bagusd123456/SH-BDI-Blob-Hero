@@ -62,7 +62,7 @@ public class PlayerCharacter : BaseCharacter
 
             if (Input.GetKeyDown(KeyCode.J))
             {
-                Instantiate(_skillList[1].gameObject,transform.position + Vector3.up * 10f,Quaternion.identity);
+                _skillList[1].CastSkill();
             }
         }
         

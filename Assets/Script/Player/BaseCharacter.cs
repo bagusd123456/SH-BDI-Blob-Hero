@@ -19,8 +19,6 @@ public abstract class BaseCharacter : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        time = 0;
-        currentHP -= damage;
         if(currentHP <= 0)
         {
             currentHP = 0;
@@ -29,6 +27,11 @@ public abstract class BaseCharacter : MonoBehaviour
                 OnDead();
                 isDead = true;
             }
+        }
+        else
+        {
+            time = 0;
+            currentHP -= damage;
         }
     }
 
@@ -46,9 +49,9 @@ public abstract class BaseCharacter : MonoBehaviour
         if (currentHP > maxHP) currentHP = maxHP;
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        time = 1;
     }
 
     // Update is called once per frame

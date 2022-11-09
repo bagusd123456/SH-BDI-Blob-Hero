@@ -13,12 +13,13 @@ public class SkillMissile : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         base.Update();
         TargetClose();
     }
@@ -34,7 +35,9 @@ public class SkillMissile : BaseSkill
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                target = item;
+                if(item.GetComponent<EnemyCharacter>() != null)
+                    if(!item.GetComponent<EnemyCharacter>().isDead)
+                        target = item;
             }
         }
     }
@@ -50,5 +53,8 @@ public class SkillMissile : BaseSkill
         }   
     }
 
-    
+    public override void OnLevelUp()
+    {
+        throw new System.NotImplementedException();
+    }
 }

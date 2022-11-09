@@ -22,7 +22,6 @@ public class EnemyCharacter : BaseCharacter
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = maxHP;
         player = GameObject.FindGameObjectWithTag("Player");
         playerCharacter = player.GetComponent<PlayerCharacter>();
     }
@@ -68,7 +67,7 @@ public class EnemyCharacter : BaseCharacter
     public override void Move()
     {
         Vector3 direction = player.transform.position - this.transform.position;
-        charController.SimpleMove(direction * moveSpeed);
+        charController.SimpleMove(direction * moveSpeed * Time.deltaTime);
     }
 
     public void FaceToPlayer()
@@ -99,7 +98,6 @@ public class EnemyCharacter : BaseCharacter
     {
         isDead = true;
         animator.SetBool("isDead", isDead);
-        Destroy(gameObject, 3f);
     }
     private void OnDrawGizmos()
     {
