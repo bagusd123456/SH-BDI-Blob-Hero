@@ -8,7 +8,7 @@ public class UI_HealthBar : MonoBehaviour
     public Slider healthBar;
     public Image health;
 
-    public Transform camTransform;
+    [HideInInspector] public Transform camTransform;
 
     Quaternion originalRotation;
     BaseCharacter player;
@@ -17,6 +17,7 @@ public class UI_HealthBar : MonoBehaviour
     {
         player = GetComponentInParent<BaseCharacter>();
         originalRotation = transform.rotation;
+        camTransform = Camera.main.GetComponent<Transform>();
     }
 
     // Update is called once per frame

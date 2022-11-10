@@ -3,7 +3,14 @@ guid: 49d0f05ef1795a243b0a5831a039b9fb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - charController: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - player: {instanceID: 0}
+  - hitCheck: {instanceID: 0}
+  - playerCharacter: {instanceID: 0}
+  - healthPrefab: {fileID: 3196725435181235015, guid: e2b1ede7478540446bfee0de54297e0e,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

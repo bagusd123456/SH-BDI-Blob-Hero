@@ -35,16 +35,17 @@ public class SkillMissile : BaseSkill
             if (distance < closestDistance)
             {
                 closestDistance = distance;
+                target = item;
                 if(item.GetComponent<EnemyCharacter>() != null)
-                    if(!item.GetComponent<EnemyCharacter>().isDead)
-                        target = item;
+                    if(item.GetComponent<EnemyCharacter>().isDead)
+                        target = null;
             }
         }
     }
 
     public override void CastSkill()
     {
-        if (canCast)
+        if (canCast && target != null)
         {
             time = cooldownTime;
             GO = Instantiate(prefabFX, transform.position + offset, Quaternion.identity);
@@ -55,6 +56,18 @@ public class SkillMissile : BaseSkill
 
     public override void OnLevelUp()
     {
-        throw new System.NotImplementedException();
+        if (!gameObject.GetComponent<SkillMissile>().enabled)
+            gameObject.GetComponent<SkillMissile>().enabled = true;
+
+        else
+        {
+            if (cooldownTime > 0)
+            {
+                cooldownTime -= 0.2f / 1.5f;
+                if (cooldownTime < 0) cooldownTime = 0.02f;
+            }
+        }
+
+        
     }
 }

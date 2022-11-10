@@ -55,12 +55,12 @@ public class PlayerCharacter : BaseCharacter
                 animator.SetTrigger("isAttack");
             }
 
-            if (Input.GetKeyDown(KeyCode.K))
+            if (_skillList[0].time < _skillList[0].cooldownTime)
             {
                 _skillList[0].CastSkill();
             }
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (_skillList[1].time < _skillList[1].cooldownTime)
             {
                 _skillList[1].CastSkill();
             }

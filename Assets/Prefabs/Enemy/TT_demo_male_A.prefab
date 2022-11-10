@@ -1079,6 +1079,8 @@ MonoBehaviour:
   attackRadius: 1.25
   attackDamage: 1
   playerCharacter: {fileID: 0}
+  healthPrefab: {fileID: 3196725435181235015, guid: e2b1ede7478540446bfee0de54297e0e,
+    type: 3}
 --- !u!1 &6257054809411035551
 GameObject:
   m_ObjectHideFlags: 0

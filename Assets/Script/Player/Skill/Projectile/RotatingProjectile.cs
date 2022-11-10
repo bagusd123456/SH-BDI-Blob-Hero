@@ -53,5 +53,12 @@ public class RotatingProjectile : MonoBehaviour
         }
         transform.position = rotateAround.position + offset;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyCharacter en = other.gameObject.GetComponent<EnemyCharacter>();
+        BlobOrbs orb = FindObjectOfType<BlobOrbs>();
+        if (en != null && !en.isDead) en.TakeDamage(orb.baseDamage);
+    }
 #endif
 }

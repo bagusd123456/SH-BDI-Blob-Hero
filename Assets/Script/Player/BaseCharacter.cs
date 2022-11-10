@@ -5,14 +5,16 @@ using static PlayerCharacter;
 
 public abstract class BaseCharacter : MonoBehaviour
 {
-    public CharacterController charController;
-    public Animator animator;
+    [HideInInspector] public CharacterController charController;
+    [HideInInspector] public Animator animator;
+
     protected float movementSpeed = 10f;
     protected float rotationSpeed = 180f;
     public int maxHP;
     public int currentHP;
     public bool isDead = false;
     public float time;
+
     public abstract void Move();
 
     public abstract void OnDead();
@@ -52,7 +54,9 @@ public abstract class BaseCharacter : MonoBehaviour
     void Awake()
     {
         time = 1;
-    }
+        charController = gameObject.GetComponent<CharacterController>();
+        animator = gameObject.GetComponent<Animator>();
+}
 
     // Update is called once per frame
     public virtual void Update()

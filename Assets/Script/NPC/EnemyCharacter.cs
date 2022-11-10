@@ -19,11 +19,17 @@ public class EnemyCharacter : BaseCharacter
     public float attackRadius;
     public int attackDamage;
     public PlayerCharacter playerCharacter;
+
+    public Canvas healthPrefab;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerCharacter = player.GetComponent<PlayerCharacter>();
+        var healthCanvas = gameObject.GetComponentInChildren<Canvas>();
+        if (healthCanvas == null)
+            healthCanvas = Instantiate(healthPrefab, gameObject.transform);
+
     }
 
     // Update is called once per frame
@@ -98,6 +104,7 @@ public class EnemyCharacter : BaseCharacter
     {
         isDead = true;
         animator.SetBool("isDead", isDead);
+        player.GetComponent<SkillManager>().AddExp(20);
     }
     private void OnDrawGizmos()
     {

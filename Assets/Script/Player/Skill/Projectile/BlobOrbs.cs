@@ -66,7 +66,7 @@ public class BlobOrbs : BaseSkill
 
         if (projectiles.Count < maxOrb)
         {
-            var prj = Instantiate(projectile);
+            var prj = Instantiate(projectile,GameObject.FindGameObjectWithTag("Player").transform);
             prj.rotateAround = transform;
             prj.transform.position = transform.position + Vector3.forward;
             projectiles.Add(prj);
@@ -77,6 +77,23 @@ public class BlobOrbs : BaseSkill
                 foreach (var item in projectiles)
                 {
                     
+                    item.angle = 6.29f / projectiles.Count * i;
+                    i++;
+                }
+            }
+        }
+        else if( projectiles.Count > maxOrb)
+        {
+            var prj = projectiles[projectiles.Count - 1];
+            projectiles.Remove(prj);
+            Destroy(prj.gameObject);
+
+            if (projectiles.Count > 0)
+            {
+                int i = 0;
+                foreach (var item in projectiles)
+                {
+
                     item.angle = 6.29f / projectiles.Count * i;
                     i++;
                 }

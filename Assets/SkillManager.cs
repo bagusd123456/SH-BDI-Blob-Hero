@@ -1,4 +1,5 @@
 using Doozy.Runtime.UIManager.Animators;
+using Doozy.Runtime.UIManager.Containers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,16 @@ public class SkillManager : MonoBehaviour
     List<BaseSkill> currentActiveSkills = new List<BaseSkill>();
     PlayerCharacter player;
 
-    public UIContainerUIAnimator container;
+    public UIContainer container;
 
     public SkillButtonUI skillButtonPrefab;
     public Transform skillButtonSpawnTransform;
 
+    [SerializeField]
     int level = 1;
+    [SerializeField]
     int currentExp = 0;
+    [SerializeField]
     int nextExpToLevelUp = 25;
 
     public void AddExp(int Exp)
@@ -34,6 +38,8 @@ public class SkillManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindObjectOfType<PlayerCharacter>();
+        InitAvailableSkills();
+        ShowAvailableSkills();
     }
     // Start is called before the first frame update
     void Start()
@@ -46,22 +52,23 @@ public class SkillManager : MonoBehaviour
         foreach (var item in availableSkills)
         {
             var btn = Instantiate(skillButtonPrefab, skillButtonSpawnTransform);
-            btn.SkillToAdd = item;
+            btn.skillToAdd = item;
             btn.Init();
         }
     }
 
     public void AddSkill(BaseSkill skill)
     {
-        var find = currentActiveSkills.Find(x => x.skillName == skill.skillName);
+        var find = availableSkills.Find(x => x.skillName == skill.skillName);
         if(find != null)
         {
             find.OnLevelUp();
         }
+
         else
         {
             var skillClone = Instantiate(skill, player.transform);
-            currentActiveSkills.Add(skillClone);
+            availableSkills.Add(skillClone);
         }
     }
 
