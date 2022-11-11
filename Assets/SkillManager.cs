@@ -26,8 +26,9 @@ public class SkillManager : MonoBehaviour
     public void AddExp(int Exp)
     {
         currentExp += Exp;
-        if(currentExp > nextExpToLevelUp * level)
+        if(currentExp > nextExpToLevelUp)
         {
+            nextExpToLevelUp = nextExpToLevelUp * level;
             ShowAvailableSkills();
             currentExp = 0;
             level++;

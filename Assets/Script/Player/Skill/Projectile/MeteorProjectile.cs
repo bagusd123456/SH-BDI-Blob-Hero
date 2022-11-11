@@ -21,7 +21,7 @@ public class MeteorProjectile : BaseSkill
     // Update is called once per frame
     void Update()
     {
-        
+        base.Update();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,13 +31,23 @@ public class MeteorProjectile : BaseSkill
 
     public override void CastSkill()
     {
-        var go = Instantiate(prefabFX, transform.position + Vector3.up * 10f, Quaternion.identity);
-        go.GetComponent<MeteorBehavior>().blowFX = blowFX;
+        if (canCast)
+        {
+            time = cooldownTime;
+            var go = Instantiate(prefabFX, transform.position + Vector3.up * 10f, Quaternion.identity);
+            go.GetComponent<MeteorBehavior>().blowFX = blowFX;
+        }
+        
     }
 
     public override void OnLevelUp()
     {
+        if (!gameObject.GetComponent<MeteorProjectile>().enabled)
+            gameObject.GetComponent<MeteorProjectile>().enabled = true;
+
+        else
+            scaleUp += 0.2f;
+
         //base.OnLevelUp();
-        scaleUp += 0.2f;
     }
 }

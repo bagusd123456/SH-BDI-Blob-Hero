@@ -17,7 +17,7 @@ public class SkillMissile : BaseSkill
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
         base.Update();
